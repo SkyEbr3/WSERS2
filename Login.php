@@ -34,7 +34,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         if (password_verify($_POST['password'], $row['Password'])) {
             print ' Successfully Registered';
         } else {
-            ' Mismatch password';
+            print ' Mismatch password';
         }
     } else {
         print ' You are not in our database. Please register first';
