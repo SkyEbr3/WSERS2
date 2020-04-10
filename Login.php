@@ -19,7 +19,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     include_once('credentials.php');
     $connect = mysqli_connect($servername, $username, $password, $database);
 
-    if (!$connect ) {
+    if (!$connect) {
         die(' Unsuccessful connection' . mysqli_connect_errno());
     }
     $user = $connect->prepare('SELECT * FROM ppl WHERE username=?');
@@ -32,7 +32,17 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $row = $MyResult->fetch_assoc();
 
         if (password_verify($_POST['password'], $row['Password'])) {
-            print ' Successfully Registered';
+            print ' Successfully Registered</br>';
+            print ' First Name: ' . $row['First_Name'] . '</br>';
+            print ' Last Name: ' . $row['Second_Name'] . '</br>';
+            print ' Age: ' . $row['Age'] . '</br>';
+            print ' User Name: ' . $row['UserName'] . '</br>';
+            $country = $connect->prepare('SELECT * FROM COUNTRIES WHERE COUNTRY_ID=?');
+            $country->bind_param('i', $row['Nationality']);
+            $country->execute();
+            $resultOfCountry = $country->get_result();
+            $nationality = $resultOfCountry->fetch_assoc();
+            print ' You are from: '.$nationality["COUNTRY_NAME"];
         } else {
             print ' Mismatch password';
         }
