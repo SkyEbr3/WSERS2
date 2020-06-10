@@ -1,0 +1,151 @@
+body {
+    background-color: rgb(68, 143, 145);
+}
+
+.column-layout {
+    max-width: 1200px;
+    background-color: #fff;
+    margin: 40px auto 0 auto;
+    line-height: 1.65;
+    padding: 20px 50px;
+    display: flex;
+}
+
+.main-column {
+    flex: 2;
+    order: 2;
+}
+
+.sidebar-one {
+    flex: 1;
+    order: 1;
+}
+
+.sidebar-two {
+    flex: 1;
+    order: 3;
+}
+
+.call-outs-container {
+    max-width: 1200px;
+    margin: 40px auto 0 auto;
+    /* for computer or big screen */
+    /* display: flex;
+    justify-content: space-between; */
+}
+
+.call-out {
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    flex-basis: 30%;
+}
+
+
+/* mobile responsive */
+
+@media(min-width:900px) {
+    .call-outs-container {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.call-out:nth-child(1) {
+    background-color: rgb(194, 238, 71);
+}
+
+.call-out:nth-child(2) {
+    background-color: rgb(238, 135, 135);
+}
+
+.call-out:nth-child(3) {
+    background-color: rgb(127, 127, 236);
+}
+
+
+/* for different screen sizes */
+
+.fix-size-container {
+    max-width: 1400px;
+    margin: 40px auto 0 auto;
+    background-color: #fff;
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+
+/* @media(min-width:900px) {
+    .fix-size-container {
+        display: flex;
+        justify-content: space-between;
+    }
+} */
+
+.fix-size p {
+    width: 150px;
+    height: 100px;
+    background-color: burlywood;
+    color: rgb(230, 80, 80);
+    line-height: 100px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+
+/* simple centering */
+
+
+/* parents */
+
+.banner {
+    height: 400px;
+    max-width: 700px;
+    margin: 40px auto 40px auto;
+    background-color: rgb(171, 230, 103);
+    /* all about flexbox */
+    display: flex;
+}
+
+
+/* child */
+
+.center-me {
+    color: rgb(235, 93, 93);
+    font-size: 50px;
+    margin: auto;
+}
+
+.equal-hight {
+    max-height: 900px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.first {
+    background-color: #fff;
+    padding: 20px;
+    flex: 1;
+}
+
+.second {
+    background-color: yellow;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.second-a {
+    background-color: rgb(215, 238, 130);
+    flex: 1;
+}
+
+.second-b {
+    background-color: rgb(125, 125, 230);
+    flex: 1;
+}

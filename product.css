@@ -1,0 +1,135 @@
+/* @import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"; */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-size: cover;
+    box-sizing: border-box;
+    opacity: 0.8;
+}
+
+.finish-order {
+    /* background-image: url(home10.jpg); */
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-size: cover;
+    box-sizing: border-box;
+    opacity: 0.8;
+}
+
+
+/* .product-body {
+    background-image: url(back.jpg);
+} */
+
+
+/* body .finish-order {
+    background-image: url(home14.jpg);
+} */
+
+
+/* * {
+    padding: 0;
+    margin: 0;
+} */
+
+
+/* body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-image: url(login11.jpg);
+    background-size: cover;
+    box-sizing: border-box;
+    opacity: 0.8;
+    background-repeat: no-repeat;
+} */
+
+.nav-bar {
+    background: rgb(103, 133, 48);
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+}
+
+.nav-bar ul {
+    display: inline-flex;
+    list-style: none;
+    color: red;
+    margin: auto;
+}
+
+.nav-bar ul li {
+    width: 100px;
+    margin: 5px;
+    padding: 5px;
+}
+
+@media(min-width:600px) {
+    .product {
+        /* display: flex; */
+        justify-content: space-between;
+    }
+}
+
+.nav-bar ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.active,
+.nav-bar li a:hover {
+    background: rgb(131, 139, 214);
+    border-radius: 15px;
+}
+
+.nav-bar li a:hover {
+    width: auto;
+    background: rgb(131, 139, 214);
+    border-radius: 15px;
+}
+
+.nav-bar .fa {
+    margin-right: 5px;
+}
+
+h1 {
+    color: black(255, 255, 255, 0.815);
+    text-align: center;
+    margin-top: 1%;
+    font-size: 2cm;
+    font-family: sans-serif;
+}
+
+.product img {
+    height: 150px;
+    width: 150px;
+    margin: auto;
+}
+
+.product {
+    text-align: center;
+    margin-top: 20px;
+    color: rgb(17, 5, 5);
+    /* padding-left: 30px; */
+    display: inline-block;
+    margin-left: 10px;
+    padding-bottom: 40px;
+}
+
+h3,
+h4,
+h5 {
+    margin: auto;
+    margin-left: 15px;
+    padding-bottom: 5px;
+}
+
+.buy input:hover {
+    border-radius: 10px;
+    margin: auto;
+}

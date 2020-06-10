@@ -1,0 +1,381 @@
+/* * {
+    padding: 0;
+    margin: 0;
+} */
+
+
+/* body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-image: url(about3.jpg);
+    background-size: cover;
+    box-sizing: border-box; */
+
+
+/* opacity: 0.5; */
+
+
+/* background-color: #dfe6e9; */
+
+
+/* } */
+
+
+/* body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-image: url(login11.jpg);
+    background-size: cover;
+    box-sizing: border-box;
+    opacity: 0.8;
+    background-repeat: no-repeat;
+} */
+
+.nav-bar {
+    background: rgb(103, 133, 48);
+    text-align: center;
+    border-radius: 10px;
+    /* position: relative; */
+}
+
+.nav-bar ul {
+    display: inline-flex;
+    list-style: none;
+    color: rgb(112, 80, 255);
+}
+
+.nav-bar ul li {
+    width: 100px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.nav-bar ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.active,
+.nav-bar li a:hover {
+    background: rgb(131, 139, 214);
+    border-radius: 15px;
+}
+
+.nav-bar li a:hover {
+    width: auto;
+    background: rgb(131, 139, 214);
+    border-radius: 15px;
+}
+
+.nav-bar .fa {
+    margin-right: 5px;
+}
+
+
+/* h1 {
+    color: rgba(255, 255, 255, 0.815);
+    text-align: center;
+    margin-top: 10%;
+    font-size: 2cm;
+    font-family: sans-serif;
+} */
+
+
+/* .main-container {
+    max-width: 1250px;
+    margin: 40px auto 0 auto; */
+
+
+/* for computer or big screen */
+
+
+/* display: flex;
+    justify-content: space-between; */
+
+
+/* } */
+
+.box {
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    flex-basis: 30%;
+    border-radius: 30px;
+    opacity: 0.9;
+    display: flex;
+}
+
+
+/* mobile responsive */
+
+@media(min-width:600px) {
+    .main-container {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+
+/* .box:nth-child(1) {
+    background-color: rgb(194, 238, 71);
+} */
+
+
+/* .box:nth-child(2) {
+    background-color: rgb(238, 135, 135);
+} */
+
+
+/* .box:nth-child(3) {
+    background-color: rgb(127, 127, 236);
+} */
+
+
+/* .box img {
+    height: 200px;
+    width: 300px;
+    border-radius: 10px;
+    margin: auto;
+} */
+
+.box p {
+    margin: auto;
+    margin-left: 10px;
+    padding-top: 40px;
+    color: white;
+}
+
+.box h3 {
+    font-family: sans-serif;
+    margin-right: 10px;
+    color: white;
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+
+/* .socialImg { */
+
+
+/*The logos for social networks are styled here !*/
+
+
+/* width: 50px;
+    height: 50px; */
+
+
+/* margin-left: 5px; */
+
+
+/* } */
+
+
+/* #footer h3 {
+    padding-left: 40px;
+    border-bottom: 3px solid #383030;
+    margin-bottom: 5px;
+    color: white;
+} */
+
+
+/* #footer {
+    margin-top: 18%;
+    margin-bottom: 0; */
+
+
+/* background-color: #dfe6e9; */
+
+
+/* } */
+
+
+/* .social-link a {
+    text-decoration: none;
+    margin-left: 30px;
+}
+
+.social-link ul li {
+    list-style: none;
+}
+
+.some-info ul li {
+    display: inline-block;
+    text-align: center;
+}
+
+.some-info a {
+    text-decoration: none;
+    text-align: center;
+    margin: 8px;
+    color: white;
+} */
+
+
+/* .some-info ul li::after {
+    content: "";
+} */
+
+
+/* .some-info ul li:last-child::after {
+    content: "";
+} */
+
+
+/* .some-info ul li a:hover {
+    background: #59b2ee;
+    border-radius: 8px;
+}
+
+.some-info span {
+    margin-left: 28%;
+    color: white;
+} */
+
+
+/* #about figure {
+    margin: 0;
+} */
+
+
+/* part2  here*/
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-image: url(about3.jpg);
+    background-size: cover;
+    box-sizing: border-box;
+    opacity: 0.8;
+}
+
+.middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card {
+    cursor: pointer;
+    height: 480px;
+    width: 340px;
+}
+
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+    transition: transform .8s linear;
+    border-radius: 10px 40px;
+    /* animation: mymove 9s infinite;
+    animation-timing-function: linear; */
+}
+
+
+/* 
+@keyframes mymove {
+    from {
+        left: 0px;
+    }
+    to {
+        left: 150px;
+    }
+} */
+
+.front img {
+    /* width: 100%; */
+    height: 100%;
+}
+
+
+/* .front2 img {
+    width: 100%;
+    height: 100%;
+} */
+
+.front {
+    transform: perspective(600px)rotateY(0deg);
+}
+
+.back {
+    background: #636e72;
+    transform: perspective(600px)rotateY(180deg);
+}
+
+
+/* .front2 {
+    transform: perspective(600px)rotateY(0deg);
+} */
+
+.back-info {
+    text-align: center;
+    width: 100%;
+}
+
+.social-media {
+    margin: 20px 0;
+}
+
+.social-media a {
+    display: inline-flex;
+    width: 80px;
+    height: 80px;
+    justify-content: center;
+    align-content: center;
+    color: rgb(20, 20, 18);
+    font-size: 50px;
+    /* transition: 0.4s; */
+}
+
+.social-media a:hover {
+    background: white(148, 148, 229);
+    color: rgb(90, 235, 33);
+}
+
+.card:hover>.front {
+    transform: perspective(600px)rotateY(-180deg);
+}
+
+.card:hover>.back {
+    transform: perspective(600px)rotateY(0deg);
+}
+
+
+/* .card:hover>.front2 {
+    transform: perspective(600px)rotateY(-180deg);
+} */
+
+.back h2 {
+    color: rgb(226, 211, 211);
+    font-weight: bold;
+    /* margin-top: 50px; */
+}
+
+h2 {
+    padding-bottom: 10px;
+}
+
+.back span {
+    color: rgb(226, 211, 211);
+    font-weight: bold;
+}
+
+.back hr {
+    background-color: rgb(8, 243, 8);
+    height: 2px;
+    border: 2px;
+    box-shadow: 2px 0.5px 5px red;
+}

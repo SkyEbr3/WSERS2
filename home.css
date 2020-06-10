@@ -1,0 +1,165 @@
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-image: url(home12.jpg);
+    background-size: cover;
+    box-sizing: border-box;
+    /* opacity: 0.8; */
+}
+
+
+/* body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-image: url(login11.jpg);
+    background-size: cover;
+    box-sizing: border-box;
+    opacity: 0.8;
+    background-repeat: no-repeat;
+} */
+
+.nav-bar {
+    background: rgb(103, 133, 48);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.nav-bar ul {
+    display: inline-flex;
+    list-style: none;
+    color: rgb(112, 80, 255);
+}
+
+.nav-bar ul li {
+    width: 100px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.nav-bar ul li a {
+    text-decoration: none;
+    color: black;
+    ;
+}
+
+.active,
+.nav-bar li a:hover {
+    background: rgb(131, 139, 214);
+    border-radius: 15px;
+}
+
+.nav-bar li a:hover {
+    width: auto;
+    background: rgb(131, 139, 214);
+    border-radius: 15px;
+}
+
+.nav-bar .fa {
+    margin-right: 5px;
+}
+
+h1 {
+    font-size: 35px;
+    margin: 0;
+    /* margin-right: 10px;
+    margin-left: 50px; */
+    float: left;
+    /* padding: 5px; */
+    color: black;
+    padding-right: 30px;
+}
+
+h3 {
+    color: black;
+    font-size: 59px;
+    margin: auto;
+    text-align: center;
+}
+
+h3 span {
+    color: green;
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 40px auto 0 auto;
+    /* for computer or big screen */
+    /* display: flex;
+    justify-content: space-between; */
+}
+
+.home-box {
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    flex-basis: 30%;
+    border-radius: 30px;
+    display: flex;
+}
+
+
+/* mobile responsive */
+
+@media(min-width:900px) {
+    .main-container {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.home-box:nth-child(1) {
+    background-color: #dfe6e9;
+}
+
+.home-box:nth-child(2) {
+    background-color: #74b9ff;
+}
+
+.home-box:nth-child(3) {
+    background-color: #636e72;
+}
+
+.home-box img {
+    height: 400px;
+    width: 300px;
+    border-radius: 10px;
+    margin: auto;
+    opacity: 0.8;
+}
+
+
+/* term of service css */
+
+body.term {
+    background-color: blue;
+    background-image: url(home7.jpg);
+}
+
+.term-h h1,
+h2 {
+    text-align: center;
+    color: white;
+}
+
+
+/* policy css */
+
+body.policy {
+    background-image: url(home7.jpg);
+    text-align: center;
+    margin-top: 20%;
+    font-size: 1cm;
+}
+
+
+/* .policy p {
+    text-align: center;
+} */

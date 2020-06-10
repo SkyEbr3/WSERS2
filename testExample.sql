@@ -1,4 +1,4 @@
-create database TestExample;
+CREATE database TestExample;
 use TestExample;
 
 CREATE TABLE Products (
@@ -15,5 +15,6 @@ INSERT INTO Products (Name,Description,Price,Picture) VALUES("Tomatoes","Red veg
 INSERT INTO Products (Name,Description,Price,Picture) VALUES("Cucumber","Green thing vegetable", 4, "cucumber.jpg");
 INSERT INTO Products (Name,Description,Price,Picture) VALUES("GreenPeas","Small ones", 10, "greenPeas.jpg");
 INSERT INTO Products (Name,Description,Price,Picture) VALUES("Potatoes","They stay in the ground", 1, "Potato.jpg");
+INSERT INTO Products (Name,Description,Price,Picture) VALUES("Zucchini","They stay in the ground", 1, "zucchini.jpg");
 
 COMMIT;

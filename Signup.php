@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="main.css">
 <?php
 include_once 'sessionCheck.php';
 
@@ -11,7 +12,7 @@ include_once 'sessionCheck.php';
     if (isset($_POST['Logout'])) {
         session_destroy();
         session_unset();
-        print ' You are logged out';
+        print '  <p style="color: white;  text-align: center;font-size:20px;">Visit us again';
     } elseif ($_SESSION['UserLog']) {
         print ' You are alerady logged in, you can not signup twice';
         displayuser($connect);
@@ -23,41 +24,62 @@ include_once 'sessionCheck.php';
         isset($_POST["Username"]) &&
         isset($_POST["Password"])
     ) {
-        print "You are about to register .... but not yet<BR>";
-        $isUserThere = $connect->prepare("SELECT * FROM ppl WHERE UserName=?");
-        $isUserThere->bind_param("s", $_POST["Username"]);
-        $isUserThere->execute();
-
-        $result = $isUserThere->get_result();
-        if ($result->num_rows > 0) {
-            print "Your username is already taken ! <BR>";
+        print ' <p style="color: white;  text-align: center">You are registered <BR>';
+        if (strlen($_POST['Password']) < 6) {
+            print 'At least six characters, try again';
         } else {
-            $PasswordHashed = password_hash($_POST['Password'], PASSWORD_BCRYPT);
-            $stmt = $connect->prepare("INSERT INTO ppl(First_Name,Second_Name,Age,UserName,Password,Nationality) VALUES(?,?,?,?,?,?)");
-            $stmt->bind_param("ssissi", $_POST["FirstName"], $_POST["LastName"], $_POST["Age"], $_POST["Username"], $PasswordHashed, $_POST["Country"]);
-            $stmt->execute();
-            print "You have registered. Check the database <BR>";
-            $_SESSION['UserLog'] = true;
-            $selectstatemnt = $connect->prepare('SELECT PERSON_ID  FROM ppl WHERE UserName=?');
-            $selectstatemnt->bind_param('s', $_POST['Username']);
-            $selectstatemnt->execute();
-            $newUserId = $selectstatemnt->get_result();
-            $rowUserId = $newUserId->fetch_assoc();
-            $_SESSION['UserId'] = $rowUserId['PERSON_ID'];
 
 
-            displayuser($connect);
+            $isUserThere = $connect->prepare("SELECT * FROM ppl WHERE UserName=?");
+            $isUserThere->bind_param("s", $_POST["Username"]);
+            $isUserThere->execute();
+
+            $result = $isUserThere->get_result();
+            if ($result->num_rows > 0) {
+                print ' <p style="color: white;  text-align: center">Your username is already taken ! <BR>';
+            } else {
+                $PasswordHashed = password_hash($_POST['Password'], PASSWORD_BCRYPT);
+                // $userType = 2;
+                $stmt = $connect->prepare("INSERT INTO ppl(First_Name,Second_Name,Age,UserName,Password,Nationality) VALUES(?,?,?,?,?,?)");
+
+                $stmt->bind_param(
+                    "ssissi",
+                    $_POST["FirstName"],
+                    $_POST["LastName"],
+                    $_POST["Age"],
+                    $_POST["Username"],
+                    $PasswordHashed,
+                    $_POST["Country"],
+                    // $userType
+                );
+                $stmt->execute();
+                print " You have registered. Check the database <BR>";
+
+                $_SESSION['UserLog'] = true;
+                $selectstatemnt = $connect->prepare('SELECT PERSON_ID  FROM ppl WHERE UserName=?');
+                $selectstatemnt->bind_param('s', $_POST['Username']);
+                $selectstatemnt->execute();
+                $newUserId = $selectstatemnt->get_result();
+                $rowUserId = $newUserId->fetch_assoc();
+                $_SESSION['UserId'] = $rowUserId['PERSON_ID'];
+
+                print ' Your details';
+                displayuser($connect);
+            }
         }
     } else {
 
-
     ?>
-        <form action="Signup.php" method="POST">
-            First name: <input type="text" name="FirstName" required><br>
-            Last name: <input type="text" name="LastName" required><br>
-            Age: <input type="text" name="Age"><br>
-            UserName: <input type="text" name="Username" required><br>
-            Password: <input type="text" name="Password" required><br>
+
+        <form class="sign" action="Signup.php" method="POST">
+            <img src="avatar.png" alt="">
+            <h1>Sign in</h1>
+            <input type="text" name=" FirstName" placeholder="First Name" required><br>
+            <input type="text" name="LastName" placeholder="Last Name" required><br>
+            <input type="text" name="Age" placeholder="Age"><br>
+            <input type="text" name="Username" placeholder="User Name" required><br>
+            <input type="password" name="Password" placeholder="Password" required><br>
+
 
             <select name="Country">
                 <?php
@@ -77,7 +99,9 @@ include_once 'sessionCheck.php';
                 ?>
             </select>
             <br>
-            <input type="submit" name="Register" value="Register">
+            <input type="submit" name="Register" value="Register"><br>
+
+            <div class="back"><a href="Home.html"><i class="fa fa-arrow-left" aria-hidden="true"></i>Back</a></div>
         </form>
     <?php } ?>
 

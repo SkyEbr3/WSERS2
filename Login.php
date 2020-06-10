@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="main.css">
+
+
+
 <?php
 include_once 'sessionCheck.php';
 include_once 'credentials.php';
@@ -6,46 +10,74 @@ include_once 'displayuser.php';
 if (isset($_POST['Logout'])) {
     session_destroy();
     session_unset();
-    print ' You are logged out ';
-} elseif ($_SESSION['UserLog']) {
-    print ' You are already logged in 👋';
-    displayuser($connect);
-} elseif (isset($_POST['username']) && isset($_POST['password'])) {
+?>
+    <a class="login1" href="Login.php">
+        <p style="color:aliceblue; text-align:center"> Login</p>
+    </a><?php
+        // print '  <p style="color: white;  text-align: center">You are logged out ';
+    } elseif ($_SESSION['UserLog']) {
+        print ' <p style="color: white;  text-align: center"> You are already logged in 👋';
+        displayuser($connect);
+    } elseif (isset($_POST['username']) && isset($_POST['password'])) {
 
 
-    $user = $connect->prepare('SELECT * FROM ppl WHERE username=?');
-    $user->bind_param('s', $_POST['username']);
-    $user->execute();
-    $MyResult = $user->get_result();
+        $user = $connect->prepare('SELECT * FROM ppl WHERE username=?');
+        $user->bind_param('s', $_POST['username']);
+        $user->execute();
+        $MyResult = $user->get_result();
 
-    if ($MyResult->num_rows === 1) {
-        print ' Checking password </br>';
-        $row = $MyResult->fetch_assoc();
-
-        if (password_verify($_POST['password'], $row['Password'])) {
-
-            $_SESSION['UserLog'] = true;
+        if ($MyResult->num_rows === 1) {
+            print '  <p style="color: white;  text-align: center">Your Information </br>';
+            $row = $MyResult->fetch_assoc();
 
 
-            $_SESSION['UserId'] = $row['PERSON_ID'];
-            displayuser($connect);
+            if (password_verify($_POST['password'], $row['Password'])) {
+
+                $_SESSION['UserLog'] = true;
+
+
+                $_SESSION['UserId'] = $row['PERSON_ID'];
+                // new
+                $_SESSION['Basket'] = [];
+                displayuser($connect);
+            } else {
+                print ' <p style="color: white;  text-align: center"> Mismatch password';
+            }
         } else {
-            print ' Mismatch password';
+            print '<p style="color: #f39c12; text-align: center;font-size:30px">You are not in our database.Please sign up first</p>';
+
+
+        ?>
+        <div class="after-login">
+            <a href="Signup.php">
+                <p style="color:aliceblue;text-align:center;font-size:20px">Sign up page</p>
+            </a>
+            <a href="Login.php">
+                <p style="color:aliceblue; text-align:center;font-size:20px"> Login page</p>
+            </a>
+        </div>
+
+    <?php
         }
     } else {
-        print ' You are not in our database. Please register first';
-?>
-        <a href="Singup.php">Singup page</a>
-        <a href="Login.php">Login page</a>
-    <?php
-    }
-} else {
     ?>
-    <form action="Login.php" method="post">
-        Username: <input type="text" name="username" required>
-        Password: <input type="password" name="password" required>
-        Login: <input type="submit" name="login" value="Login">
+
+    <form class="login" action="Login.php" method="post">
+        <img src="avatar.png" alt="">
+        <h1>Login</h1>
+        <i class="fa fa-user" aria-hidden="true"></i>
+        <input type="text" name="username" placeholder="Username" required>
+        <i class="fa fa-lock" aria-hidden="true"></i>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <!-- <p>Forgot your password <input type="checkbox"></p> -->
+
+        <input type="submit" name="login" value="Login">
+        <div class="fa fa-arrow-left" aria-hidden="true"></div>
+        <a class="backlogin" href="Home.html">Back</a>
+
+
     </form>
 <?php
-}
+    }
 ?>
