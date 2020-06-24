@@ -1,20 +1,37 @@
-<?php
-include_once "credentials.php";
-include_once 'sessionCheck.php';
-?>
+<!DOCTYPE html>
+<html lang="en">
 
-<Body class="Edit">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="edit.css">
+</head>
+
+<body>
+
+
+    <?php
+    include_once "credentials.php";
+    include_once 'sessionCheck.php';
+    ?>
+
+
     <?php
     if (!$_SESSION['UserLog']) { ?>
-        You are not allowed here,log in first
-        <a href="Login.php"><br>Login</a>
+        <div>
+           
+            <a href="Login.php">
+                <p style="color:aliceblue; text-align:center;font-size:20px;">Login page</p>
+            </a>
+        </div>
     <?php exit();
     }
     if (isset($_POST['Update'])) {
-        if(strlen($_POST['Password'])> 6)
-        $PasswordHashed = password_hash($_POST['Password'], PASSWORD_BCRYPT);
+        if (strlen($_POST['Password']) > 6)
+            $PasswordHashed = password_hash($_POST['Password'], PASSWORD_BCRYPT);
         print ' We are updating your details';
-        $sqlUpdate = $connect->prepare('UPDATE ppl SET First_Name=?,Second_Name=?,Age=?,Password=?,UserName=? WHERE PERSON_ID=? ');
+        $sqlUpdate = $connect->prepare('UPDATE ppl SET First_Name=?,Second_Name=?,Age=?,UserName=?,Password=?,Nationality=? WHERE PERSON_ID=?');
         $sqlUpdate->bind_param(
             'ssissii',
             $_POST['FirstName'],
@@ -27,34 +44,34 @@ include_once 'sessionCheck.php';
         );
         $sqlUpdate->execute();
         print  'Updated information';
-    }else{
-        print 'You must type  passoword';
-    }
-
+    } 
+    // else {
+    //     print '<p style="color:white">You must type  passoword</p>';
+    // }
 
     ?>
-    <h2>Update your information</h2>
+    <!-- <h2>Update your information</h2> -->
     <?php
-    $sqlSelecct = $connect->prepare('SELECT * FROM ppl WHERE PERSON_ID=?');
-    $sqlSelecct->bind_param('i', $_SESSION['CurrentUser']);
-    $sqlSelecct->execute();
-    $result = $sqlSelecct->get_result();
+    $sqlSelect = $connect->prepare("SELECT * FROM ppl WHERE PERSON_ID=?");
+    $sqlSelect->bind_param('i', $_SESSION['UserLog']);
+    $sqlSelect->execute();
+    $result = $sqlSelect->get_result();
     if ($result->num_rows != 1) { ?>
-        You are not allowed here,You have to log in first.
-        <a href="Login.php"></a>
+        <p> are not allowed here,You have to log in first.</p>
+        <a href="Signup.php"></a>
     <?php
         die('Your account has been banned!');
     }
     $row = $result->fetch_assoc();
 
     ?>
-    <form class="sig" action="Edit.php" method="POST">
+    <form class="edit" action="Edit.php" method="POST">
         <img src="avatar.png" alt="">
-        <h1>Sign in</h1>
-        <input type="text" name=" FirstName" placeholder="First Name" value="<? $row['First_Name'];?>"required><br>
-        <input type="text" name="LastName" placeholder="Last Name" value="<? $row['Last_Name'];?>"required><br>
-        <input type="text" name="Age" placeholder="Age" value="<? $row['Age'];?>"required><br>
-        <input type="text" name="Username" placeholder="User Name" value="<? $row['Username'];?>"required><br>
+        <h1>Update Information</h1>
+        <input type="text" name=" FirstName" placeholder="First Name" value="<? $row['First_Name'];?>" required><br>
+        <input type="text" name="LastName" placeholder="Last Name" value="<? $row['Second_Name'];?>" required><br>
+        <input type="text" name="Age" placeholder="Age" value="<? $row['Age'];?>"><br>
+        <input type="text" name="Username" placeholder="User Name" value="<? $row['UserName'];?>" required><br>
         <input type="password" name="Password" placeholder="Password" value="<? $row['Password'];?>" required><br>
 
 
@@ -88,8 +105,8 @@ include_once 'sessionCheck.php';
         <br>
         <input type="submit" name="Update" value="Update"><br>
 
-        <!-- <div class="back"><a href="Home.html"><i class="fa fa-arrow-left" aria-hidden="true"></i>Back</a></div> -->
+        <div class="back"><a href="Signup.php"><i class="fa fa-arrow-left" aria-hidden="true"></i>Back</a></div>
     </form>
-
-
 </Body>
+
+</html>

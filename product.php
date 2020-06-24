@@ -73,11 +73,11 @@ include_once 'credentials.php';
             <h3>Name: <?= $row['Name'] ?></h3>
             <h4>Tips: <?= $row['Description'] ?> </h4>
             <h5>Price: <?= $row['Price'] ?> &euro;</h5>
-            <form action="product.php" method="post">
+            <form action="product.php" method="POST">
                 <input type="hidden" name="ItemToBuy" value="<?= $row['ID'] ?>">
 
                 <div class="buy">
-                    <input type="submit" value="Buy">
+                    <input type="submit" value="Add to Basket">
                 </div>
             </form>
         </div>

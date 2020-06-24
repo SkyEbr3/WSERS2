@@ -46,16 +46,20 @@
             $ProductPage->execute();
             $result = $ProductPage->get_result();
             if ($row = $result->fetch_assoc()) {
-                print $row['Name'] . $row['Picutre'] . ': ' . $row['Price'] . '&euro;' . '<br>';
+                print $row['Name']  . ': ' . $row['Price'] . '&euro;' . '<br>';
                 $total += $row['Price'];
             }
     ?>
+            <div class="product">
+                <img src="photo/<?= $row['Picture'] ?>">
+                </div>
             <form action="finishOrder.php" method="post">
                 <input type="hidden" name="Delete" value="<?= $i; ?> ">
                 <input type="submit" name="Remove" value='Remove'>
             </form>
+            
             <br>
-
+</div>
 
     <?php
 

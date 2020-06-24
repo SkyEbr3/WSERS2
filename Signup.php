@@ -11,11 +11,21 @@ include_once 'sessionCheck.php';
     include_once 'displayuser.php';
     if (isset($_POST['Logout'])) {
         session_destroy();
-        session_unset();
+        session_unset(); ?>
+        <a class="login1" href="Home.html">
+            <p style="color:aliceblue; text-align:center">Home</p>
+        </a>
+    <?php
+
         print '  <p style="color: white;  text-align: center;font-size:20px;">Visit us again';
     } elseif ($_SESSION['UserLog']) {
-        print ' You are alerady logged in, you can not signup twice';
+        print ' <p style="color: white;  text-align: center;font-size:20px;">You are alerady logged in, you can not signup twice';
         displayuser($connect);
+    ?>
+        <a class="login1" href="product.php">
+            <p style="color:aliceblue; text-align:center">Product</p>
+        </a>
+    <?php
     } else
 
     if (
@@ -39,21 +49,21 @@ include_once 'sessionCheck.php';
                 print ' <p style="color: white;  text-align: center">Your username is already taken ! <BR>';
             } else {
                 $PasswordHashed = password_hash($_POST['Password'], PASSWORD_BCRYPT);
-                // $userType = 2;
-                $stmt = $connect->prepare("INSERT INTO ppl(First_Name,Second_Name,Age,UserName,Password,Nationality) VALUES(?,?,?,?,?,?)");
+                $userType = 2;
+                $stmt = $connect->prepare("INSERT INTO ppl(First_Name,Second_Name,Age,UserName,Password,Nationality,User_role) VALUES(?,?,?,?,?,?,?)");
 
                 $stmt->bind_param(
-                    "ssissi",
+                    "ssissii",
                     $_POST["FirstName"],
                     $_POST["LastName"],
                     $_POST["Age"],
                     $_POST["Username"],
                     $PasswordHashed,
                     $_POST["Country"],
-                    // $userType
+                    $userType
                 );
                 $stmt->execute();
-                print " You have registered. Check the database <BR>";
+                print " You have been registered.  <BR>";
 
                 $_SESSION['UserLog'] = true;
                 $selectstatemnt = $connect->prepare('SELECT PERSON_ID  FROM ppl WHERE UserName=?');
@@ -62,6 +72,7 @@ include_once 'sessionCheck.php';
                 $newUserId = $selectstatemnt->get_result();
                 $rowUserId = $newUserId->fetch_assoc();
                 $_SESSION['UserId'] = $rowUserId['PERSON_ID'];
+                // print $rowUserId['PERSON_ID'];
 
                 print ' Your details';
                 displayuser($connect);
