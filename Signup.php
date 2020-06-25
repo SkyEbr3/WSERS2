@@ -15,6 +15,9 @@ include_once 'sessionCheck.php';
         <a class="login1" href="Home.html">
             <p style="color:aliceblue; text-align:center">Home</p>
         </a>
+        <a class="login1" href="Signup.php">
+            <p style="color:aliceblue; text-align:center">Signin</p>
+        </a>
     <?php
 
         print '  <p style="color: white;  text-align: center;font-size:20px;">Visit us again';
@@ -63,7 +66,7 @@ include_once 'sessionCheck.php';
                     $userType
                 );
                 $stmt->execute();
-                print " You have been registered.  <BR>";
+                // print " You have been registered.  <BR>";
 
                 $_SESSION['UserLog'] = true;
                 $selectstatemnt = $connect->prepare('SELECT PERSON_ID  FROM ppl WHERE UserName=?');
