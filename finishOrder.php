@@ -47,7 +47,7 @@
             $result = $ProductPage->get_result();
             if ($row = $result->fetch_assoc()) {
                 print $row['Name']  . ': ' . $row['Price'] . '&euro;' . '<br>';
-                $total += $row['Price'];
+                $total +=$row['Price'];
             }
     ?>
             <div class="product">
