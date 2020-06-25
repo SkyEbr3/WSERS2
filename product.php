@@ -15,6 +15,16 @@ include_once 'credentials.php';
 ?>
 
 <body class="product-body">
+    <?php
+
+
+
+    if (isset($_POST['ItemToBuy'])) {
+        // print "Some itmes to buy";
+        array_push($_SESSION['Basket'], $_POST['ItemToBuy']);
+    }
+
+    ?>
     <div class="nav-bar">
         <ul>
             <!-- <li> Welcome to our product page</li> -->
@@ -27,33 +37,23 @@ include_once 'credentials.php';
             <!-- <a href="finishOrder.php"></a> -->
 
             <li><?= sizeof($_SESSION['Basket']) ?>
-            <a href="finishOrder.php"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Basket
-            </a> 
-            
+                <a href="finishOrder.php"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Basket
+                </a>
+
             </li>
-           
-           
+
+
 
         </ul>
     </div>
 
-    <?php
 
 
-
-    if (isset($_POST['ItemToBuy'])) {
-        // print "Some itmes to buy";
-        array_push($_SESSION['Basket'],$_POST['ItemToBuy']);
-    ?>
-        <!-- do have problems -->
-        <!-- <h2>Our Products</h2> -->
 
 
     <?php
-        // $sqlBuy = $connection->prepare('DELETE FROM product WHERE ID=?');
-        // $sqlBuy->bind_param('i', $_POST['ItemToBuy']);
-        // $sqlBuy->execute();
-    }
+
+
     // $sqlInsert = $connection->prepare("INSERT INTO orders(PRODUCT_ID) VALUE(?)");
     // $sqlInsert->bind_param('i', $_POST['ItemToBuy']);
     // $sqlInsert->execute();
