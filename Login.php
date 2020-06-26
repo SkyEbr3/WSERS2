@@ -38,10 +38,10 @@ if (isset($_POST['Logout'])) {
 
     if ($MyResult->num_rows === 1) {
         print '  <p style="color: white;  text-align: center">Your Information </br>';
-        $row = $MyResult->fetch_assoc(); 
+        $row = $MyResult->fetch_assoc();
 
-       
-        
+
+
         //  '<a class="backlogin" href="product.php" style="color: red;  text-align: center">Product Page</a>';
 
         if (password_verify($_POST['password'], $row['Password'])) {
@@ -52,13 +52,20 @@ if (isset($_POST['Logout'])) {
             $_SESSION['UserId'] = $row['PERSON_ID'];
             // new
             $_SESSION['Basket'] = [];
-            displayuser($connect);?>
-             <a class="login1" href="product.php">
-            <p style="color:aliceblue; text-align:center">Product</p>
-        </a>
-            <?php
+            displayuser($connect); ?>
+            <a class="login1" href="product.php">
+                <p style="color:white;text-align:center">Product</p>
+            </a>
+        <?php
+
         } else {
-            print ' <p style="color: white;  text-align: center"> Mismatch password';
+            print ' <p style="color: white;  text-align: center"> Mismatched password';
+        ?>
+            <a class="login1" href="Login.php">
+                <p style="color:aliceblue; text-align:center;font-size:40px">Try again</p>
+            </a>
+
+        <?php
         }
     } else {
         print '<p style="color: #f39c12; text-align: center;font-size:30px">You are not in our database.Please sign up first</p>';
